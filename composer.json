@@ -1,0 +1,17 @@
+{
+    "name": "api_rest_framework",
+    "description": "api framework",
+    "type": "project",
+    "license": "Open",
+    "authors": [
+        {
+            "name": "tarek",
+            "email": "tarek.chida@gmail.com"
+        }
+    ],
+    "autoload": {
+        "classmap": ["Core/", "App/"]
+    },
+    "minimum-stability": "dev",
+    "require": {}
+}
