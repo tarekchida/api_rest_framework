@@ -16,8 +16,8 @@ class BaseController {
         
     }
 
-    public function routeNotFound() {
-        return $this->response(404, 'URL not found');
+    public function routeNotFound($error = 'URL not found') {
+        return $this->response(404, $error);
     }
 
     /**

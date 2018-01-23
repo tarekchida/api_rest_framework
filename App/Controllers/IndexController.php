@@ -8,14 +8,20 @@
 
 namespace App\Controllers;
 
+use Core\BaseController;
+
 /**
  * Description of IndexController
  *
  * @author Tarek.Chida
  */
-class IndexController {
+class IndexController extends BaseController {
 
     public function __construct() {
+        
+    }
+
+    public function home(Request $request) {
         
     }
 

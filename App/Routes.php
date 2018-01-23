@@ -7,4 +7,4 @@
 
 
 
-$router->get('/', 'UsersController#home');
+$router->get('/', 'IndexController#home');
