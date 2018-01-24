@@ -11,4 +11,24 @@
  *
  * @author Tarek.Chida
  */
- 
+require_once __DIR__ . '/../vendor/autoload.php';
+
+//Define api constants
+define('CONTROLLERS_PATH', 'App\\Controllers');
+define('CORE_NAMESPACE', 'Core');
+define("API_NOT_FOUND", 404);
+define("API_SUCCESS", 200);
+define("API_ERROR", 500);
+
+
+//Error and exceptions handles
+error_reporting(E_ALL); 
+
+
+
+// Routes 
+$router = new Core\Router();
+
+include __DIR__ . '/../App/routes.php';
+
+$router->dispatch($_SERVER['REQUEST_URI'], $_SERVER['REQUEST_METHOD']);
