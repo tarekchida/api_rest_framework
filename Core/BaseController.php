@@ -17,7 +17,7 @@ class BaseController {
     }
 
     public function routeNotFound($error = 'URL not found') {
-        return $this->response(404, $error);
+        return $this->response(API_NOT_FOUND, $error);
     }
 
     /**
@@ -27,7 +27,7 @@ class BaseController {
      * @param type $data
      * @return type
      */
-    public function response($status = 200, $message = NULL, $data = array()) {
+    public function response($status, $message = NULL, $data = array()) {
         $response = new Response($status, $message, $data);
         echo $response->toJSON();
     }
