@@ -19,7 +19,8 @@ class Response {
      * @param type $message
      * @param type $data
      */
-    public function __construct($status = API_SUCCESS, $message = NULL, $data = NULL) {
+    public function __construct($status = 200, $message = NULL, $data = NULL) {
+        header("Content-Type:application/json");
         http_response_code($status);
         $this->status = $status;
         $this->message = $message;

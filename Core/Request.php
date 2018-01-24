@@ -19,7 +19,7 @@ class Request {
      * @param type $methode
      * @param type $url
      */
-    public function __construct($input, $methode, $url) {
+    public function __construct($input, $methode, $url) { 
         $this->input = $input;
         $this->methode = $methode;
         $this->url = $url;

@@ -33,8 +33,11 @@ class Error {
         if ($code != API_NOT_FOUND) {
             $code = API_ERROR;
         }
+
+        //Set http response code F
         http_response_code($code);
 
+        //write error to log file
         $log = dirname(__DIR__) . '/log/' . date('Y-m-d') . '.log';
         ini_set('error_log', $log);
         $message = "Uncaught exception: '" . get_class($exception) . "'";

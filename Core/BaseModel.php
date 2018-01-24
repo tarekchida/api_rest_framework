@@ -1,21 +1,15 @@
 <?php
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 namespace Core;
-
-use PDO;
-use App\Config;
 
 /**
  * Description of BaseModel
  *
  * @author Tarek.Chida
  */
+use PDO;
+use App\Config; 
+
 class BaseModel {
 
     protected static function getDB() {
