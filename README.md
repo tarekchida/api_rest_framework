@@ -14,7 +14,7 @@ The framework provides Json response with (status, message and data).
 ```php
 composer dump-autoload -o
 ```
-
+This commande will create Vendor folder and generate the autoload file. 
 
 ### Configuration
 
