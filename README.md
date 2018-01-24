@@ -4,9 +4,9 @@ A simple Rest Api framework for building REST api in PHP. It's free and [open-so
 The framework provides Json response with (status, message and data).  
 ```json
 {
-"status": 200, 
-"message": "User added successfully"
-"data":{
+"status" : 200, 
+"message" : "User added successfully"
+"data" :{
         "user_id" : 2341
         }
 }
