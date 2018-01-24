@@ -22,7 +22,9 @@ define("API_ERROR", 500);
 
 
 //Error and exceptions handles
-error_reporting(E_ALL); 
+error_reporting(E_ALL);
+set_error_handler('Core\Error::errorHandler');
+set_exception_handler('Core\Error::exceptionHandler');
 
 
 
