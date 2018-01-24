@@ -95,7 +95,13 @@ class Router {
 
         switch ($methode) {
             case 'POST':
+
                 $data = $this->filterRequestData($_POST, INPUT_POST);
+
+                if ($_SERVER["CONTENT_TYPE"] == "application/json") {
+                    $data = json_decode(file_get_contents('php://input'), TRUE);
+                }
+                break;
             case 'GET':
                 $data = $this->filterRequestData($_GET, INPUT_GET);
                 break;
