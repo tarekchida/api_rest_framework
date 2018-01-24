@@ -95,7 +95,6 @@ class Router {
 
         switch ($methode) {
             case 'POST':
-
                 $data = $this->filterRequestData($_POST, INPUT_POST);
 
                 if ($_SERVER["CONTENT_TYPE"] == "application/json") {
