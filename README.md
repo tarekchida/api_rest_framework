@@ -5,7 +5,7 @@ The framework provides Json response with (status, message and data).
 ```json
 {
 "status": 200, 
-"message": User added successfully
+"message": "User added successfully"
 "data":{
         "user_id" : 2341
         }
@@ -38,7 +38,7 @@ Open the [App/Config.php](App/Config.php) file and add your database config :
 
 ### Routes
 
-Open the [App/Routes.php](App/Routes.php) file, you can add GET or POST routes by folloing this exampls : 
+Open the [App/Routes.php](App/Routes.php) file, you can add GET or POST routes by folloing this examples : 
 
 
 ```php
@@ -51,6 +51,8 @@ $router->get('/get-user', 'UsersController#get');
 //Add youser
 $router->post('/add-user', 'UsersController#add');
 
+...
+
 ```
 
 ### Models
@@ -60,7 +62,7 @@ New Models need to extends the BaseModel Class [Core/BaseModel.php](Core/BaseMod
 Also create static function for simple acces from Controller : 
 
 ```php
-$user = User::find($id)
+$user = User::find($id);
 
 ```
 ### Controllers
