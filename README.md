@@ -1,17 +1,26 @@
-# api_rest_framework
+# Api Rest Framework (ARF)
 
 A simple Rest Api framework for building REST api in PHP. It's free and [open-source](LICENSE).
 The framework provides Json response with (status, message and data).  
+```json
+{
+"status": 200, 
+"message": User added successfully
+"data":{
+        "user_id" : 2341
+        }
+}
+```
 
 ## HOW TO :  
 
 ### Steps:  
 -	Unzip the archive / clone the repository    
 -	Copy the api_rest_framework folder in your web folder (exp /var/www/html/)     
--	Create a Vhost that point to the **/public** folder      
--       Under the root folder use the terminal to run : 
+-	Create a Vhost that point to the **/public** folder
+-   Under the root folder use the terminal to run   
   
-```php
+```
 composer dump-autoload -o
 ```
 This commande will create Vendor folder and generate the autoload file. 
