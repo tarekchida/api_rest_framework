@@ -19,7 +19,7 @@ The framework provides Json response with (status, message and data).
 -	Unzip the archive / clone the repository    
 -	Copy the api_rest_framework folder in your web folder (exp /var/www/html/)     
 -	Create a Vhost that point to the **/public** folder
--       Under the root folder use the terminal to run   
+-	Under the root folder use the terminal to run   
   
 ```
 composer dump-autoload -o
