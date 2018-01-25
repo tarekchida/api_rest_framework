@@ -2,11 +2,12 @@
 
 A simple Rest Api framework for building REST api in PHP. It's free and [open-source](LICENSE).
 The framework provides Json response with (status, message and data).  
+
 ```json
 {
 "status" : 200, 
 "message" : "User added successfully"
-"data" :{
+"data" : {
         "user_id" : 2341
         }
 }
@@ -18,7 +19,7 @@ The framework provides Json response with (status, message and data).
 -	Unzip the archive / clone the repository    
 -	Copy the api_rest_framework folder in your web folder (exp /var/www/html/)     
 -	Create a Vhost that point to the **/public** folder
--   Under the root folder use the terminal to run   
+-       Under the root folder use the terminal to run   
   
 ```
 composer dump-autoload -o
@@ -42,6 +43,9 @@ Open the [App/Routes.php](App/Routes.php) file, you can add GET or POST routes b
 
 
 ```php
+//Example
+$router->get([Route_Url], [Controller]#[Action]);
+
 //Hello World
 $router->get('/', 'IndexController#home');
 
@@ -57,17 +61,17 @@ $router->post('/add-user', 'UsersController#add');
 
 ### Models
 
-Under the folder [App/Models](App/Models) you can add Model classes 
-New Models need to extends the BaseModel Class [Core/BaseModel.php](Core/BaseModel.php). 
-Also create static function for simple acces from Controller : 
+Under the folder [App/Models](App/Models) you can add Model classes.        
+New Models need to extend the BaseModel Class [Lib/BaseModel.php](Lib/BaseModel.php).    
+Also create static functions for simple acces from Controllers : 
 
 ```php
 $user = User::find($id);
 
 ```
 ### Controllers
-Under the folder [App/Controllers](App/Controllers) add your contorllers classes. 
-New Controllor need to extends the BaseController Class [Core/BaseController.php](Core/BaseController.php). 
+Under the folder [App/Controllers](App/Controllers) add your Contorller classes.     
+New Controllors need to extend the BaseController Class [Lib/BaseController.php](Lib/BaseController.php).       
 
 ### Error / Exception Handler
-The framwework can handle Errors and exception and wirte on log file under the log folder
+The framwework handle Errors and Exceptions and wirte them to a yyyy-mm-dd.log file under the log folder
