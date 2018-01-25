@@ -34,16 +34,31 @@ class Error {
             $code = API_ERROR;
         }
 
-        //Set http response code F
+        //Set http response code 
         http_response_code($code);
 
-        //write error to log file
-        $log = dirname(__DIR__) . '/log/' . date('Y-m-d') . '.log';
-        ini_set('error_log', $log);
+        //Prepare log message
         $message = "Uncaught exception: '" . get_class($exception) . "'";
         $message .= " with message '" . $exception->getMessage() . "'";
         $message .= "\nStack trace: " . $exception->getTraceAsString();
         $message .= "\nThrown in '" . $exception->getFile() . "' on line " . $exception->getLine();
+
+        //write error to log file
+        self::logger($message);
+    }
+
+    /**
+     * Log error 
+     * @param type $message
+     */
+    public static function logger($message) {
+        //Test if folder exists and create it
+        if (!file_exists(dirname(__DIR__) . '/log/')) {
+            mkdir(dirname(__DIR__) . '/log/', 0777, true);
+        }
+
+        $log = dirname(__DIR__) . '/log/' . date('Y-m-d') . '.log';
+        ini_set('error_log', $log);
         error_log($message);
     }
 
