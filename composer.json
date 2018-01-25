@@ -10,7 +10,7 @@
         }
     ],
     "autoload": {
-        "classmap": ["Core/", "App/"]
+        "classmap": ["Lib/", "App/"]
     },
     "minimum-stability": "dev",
     "require": {}

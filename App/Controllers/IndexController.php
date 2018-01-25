@@ -2,8 +2,8 @@
 
 namespace App\Controllers;
 
-use Core\BaseController;
-use Core\Request;
+use Lib\BaseController;
+use Lib\Request;
 
 /**
  * Description of IndexController

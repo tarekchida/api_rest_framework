@@ -1,13 +1,13 @@
 <?php
 
-namespace Core;
+namespace Lib;
 
 /**
  * Description of BaseController
  *
  * @author Tarek.Chida
  */
-use Core\Response;
+use Lib\Response;
 
 class BaseController {
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace Core;
+namespace Lib;
 
 /**
  * Description of Response

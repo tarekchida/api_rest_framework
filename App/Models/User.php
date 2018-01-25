@@ -7,7 +7,8 @@ namespace App\Models;
  *
  * @author Tarek.Chida
  */
-use Core\BaseModel;
+use Lib\BaseModel;
+
 use PDO;
 
 class User extends BaseModel {
