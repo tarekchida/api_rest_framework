@@ -18,7 +18,7 @@ class IndexController extends BaseController {
 
     public function home(Request $request) {
 
-        return $this->response(API_SUCCESS, 'Api Rest Framwork', $request->getInputArray());
+        return $this->response(API_SUCCESS, 'Api Rest Framework', $request->getInputArray());
     }
 
 }
