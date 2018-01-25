@@ -52,7 +52,7 @@ $router->get('/', 'IndexController#home');
 //Get user by id
 $router->get('/get-user', 'UsersController#get');
 
-//Add youser
+//Add user
 $router->post('/add-user', 'UsersController#add');
 
 ...
