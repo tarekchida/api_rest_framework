@@ -17,7 +17,6 @@ require_once __DIR__ . '/../vendor/autoload.php';
 
 //Define api constants
 define('CONTROLLERS_PATH', 'App\\Controllers');
-define('CORE_NAMESPACE', 'Core');
 define("API_NOT_FOUND", 404);
 define("API_SUCCESS", 200);
 define("API_ERROR", 500);
@@ -25,13 +24,13 @@ define("API_ERROR", 500);
 
 //Error and exceptions handles
 error_reporting(E_ALL);
-set_error_handler('Core\Error::errorHandler');
-set_exception_handler('Core\Error::exceptionHandler');
+set_error_handler('Lib\Error::errorHandler');
+set_exception_handler('Lib\Error::exceptionHandler');
 
 
 
 // Routes 
-$router = new Core\Router();
+$router = new Lib\Router();
 
 include __DIR__ . '/../App/routes.php';
 
