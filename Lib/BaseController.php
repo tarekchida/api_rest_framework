@@ -25,7 +25,7 @@ class BaseController {
     }
 
     /**
-     * Response Json methode
+     * Response Json method
      * @param type $status
      * @param type $message
      * @param type $data

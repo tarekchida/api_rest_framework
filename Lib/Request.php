@@ -10,18 +10,18 @@ namespace Lib;
 class Request {
 
     protected $input;
-    protected $methode;
+    protected $method;
     protected $url;
 
     /**
      * 
      * @param type $input
-     * @param type $methode
+     * @param type $method
      * @param type $url
      */
-    public function __construct($input, $methode, $url) { 
+    public function __construct($input, $method, $url) { 
         $this->input = $input;
-        $this->methode = $methode;
+        $this->method = $method;
         $this->url = $url;
     }
 
@@ -46,7 +46,7 @@ class Request {
      * @return type
      */
     public function getMethode() {
-        return $this->methode;
+        return $this->method;
     }
 
     /**
@@ -67,10 +67,10 @@ class Request {
 
     /**
      * 
-     * @param type $methode
+     * @param type $method
      */
-    public function setMethode($methode) {
-        $this->methode = $methode;
+    public function setMethode($method) {
+        $this->method = $method;
     }
 
     /**

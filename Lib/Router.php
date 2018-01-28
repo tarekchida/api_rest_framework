@@ -28,7 +28,7 @@ class Router {
      */
     public function get($path, $method) {
         list( $controller, $action ) = explode("#", $method);
-        $route['methode'] = "GET";
+        $route['method'] = "GET";
         $route['controller'] = CONTROLLERS_PATH . '\\' . $controller;
         $route['action'] = $action;
         $this->routes[$path] = $route;
@@ -41,7 +41,7 @@ class Router {
      */
     public function post($path, $method) {
         list( $controller, $action ) = explode("#", $method);
-        $route['methode'] = "POST";
+        $route['method'] = "POST";
         $route['controller'] = CONTROLLERS_PATH . '\\' . $controller;
         $route['action'] = $action;
         $this->routes[$path] = $route;
@@ -60,11 +60,11 @@ class Router {
 
             if ($routeUrl[0] == $route) {
 
-                if ($params['methode'] != $request_methode) {
-                    $this->routeError('Methode ' . $request_methode . ' not permitted for this url');
+                if ($params['method'] != $request_methode) {
+                    $this->routeError('method ' . $request_methode . ' not permitted for this url');
                 }
-                $input = $this->getRequestData($params['methode']);
-                $request = new Request($input, $params['methode'], $routeUrl[0]);
+                $input = $this->getRequestData($params['method']);
+                $request = new Request($input, $params['method'], $routeUrl[0]);
                 $this->doCallback($params, $request);
                 return FALSE;
             }
@@ -87,13 +87,13 @@ class Router {
     }
 
     /**
-     * Get request data by methode [POST|GET]
-     * @param type $methode
+     * Get request data by method [POST|GET]
+     * @param type $method
      * @return array
      */
-    private function getRequestData($methode) {
+    private function getRequestData($method) {
 
-        switch ($methode) {
+        switch ($method) {
             case 'POST':
 
                 $data = $this->filterRequestData($_POST, INPUT_POST);
@@ -115,13 +115,13 @@ class Router {
     /**
      * Filter Request data
      * @param type $input
-     * @param type $methode
+     * @param type $method
      * @return type
      */
-    private function filterRequestData($input, $methode) {
+    private function filterRequestData($input, $method) {
         $data = array();
         foreach ($input as $key => $value) {
-            $data[$key] = filter_input($methode, $key, FILTER_DEFAULT);
+            $data[$key] = filter_input($method, $key, FILTER_DEFAULT);
         }
         return $data;
     }
