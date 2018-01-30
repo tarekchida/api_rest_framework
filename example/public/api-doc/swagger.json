@@ -1,0 +1,429 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "description" : "This is a sample api  server.   .\n",
+    "version" : "1.0.0",
+    "title" : "Deezer Api",
+    "contact" : {
+      "email" : "tarek.chida@gmail.com"
+    },
+    "license" : {
+      "name" : "Apache 2.0",
+      "url" : "http://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  },
+  "host" : "",
+  "basePath" : "/",
+  "tags" : [ {
+    "name" : "Users"
+  }, {
+    "name" : "Songs"
+  }, {
+    "name" : "Playlists"
+  } ],
+  "schemes" : ["http" ],
+  "paths" : {
+    "/get-user" : {
+      "get" : {
+        "tags" : [ "Users" ],
+        "summary" : "Get user by id",
+        "operationId" : "getUser",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "query",
+          "description" : "User id",
+          "required" : true,
+          "type" : "integer"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "User data",
+            "schema" : {
+              "$ref" : "#/definitions/userResponse"
+            }
+          },
+          "404" : {
+            "description" : "User not found"
+          },
+          "500" : {
+            "description" : "Fields are missing"
+          }
+        }
+      }
+    },
+    "/get-song" : {
+      "get" : {
+        "tags" : [ "Songs" ],
+        "summary" : "Get song by id",
+        "operationId" : "getSong",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "id",
+          "in" : "query",
+          "description" : "Song id",
+          "required" : true,
+          "type" : "integer"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Song data",
+            "schema" : {
+              "$ref" : "#/definitions/songResponse"
+            }
+          },
+          "404" : {
+            "description" : "User not found"
+          },
+          "500" : {
+            "description" : "Fields are missing"
+          }
+        }
+      }
+    },
+    "/get-user-playlist" : {
+      "get" : {
+        "tags" : [ "Playlists" ],
+        "summary" : "Get user playlist",
+        "operationId" : "getUserPlaylist",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "user_id",
+          "in" : "query",
+          "description" : "User id id",
+          "required" : true,
+          "type" : "integer"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Playlist data",
+            "schema" : {
+              "$ref" : "#/definitions/playlistResponse"
+            }
+          },
+          "404" : {
+            "description" : "playlist not found"
+          },
+          "500" : {
+            "description" : "Fields are missing"
+          }
+        }
+      }
+    },
+    "/add-song" : {
+      "post" : {
+        "tags" : [ "Playlists" ],
+        "summary" : "Add song to playlist",
+        "operationId" : "addSongToPlaylist",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "body",
+          "description" : "The email/password",
+          "required" : true,
+          "schema" : {  
+            "$ref" : "#/definitions/addRemoveSong"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Playlist data",
+            "schema" : {
+              "$ref" : "#/definitions/playlistResponse"
+            }
+          },
+          "404" : {
+            "description" : "Song or playlist not found"
+          },
+          "409" : {
+            "description" : "Song already exists"
+          },
+          "500" : {
+            "description" : "Fields are missing"
+          }
+        }
+      }
+    },
+    "/remove-song" : {
+      "post" : {
+        "tags" : [ "Playlists" ],
+        "summary" : "Remove song from playlist",
+        "operationId" : "removeSongFromPlaylist",
+        "consumes" : [ "application/json" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "body",
+          "description" : "The email/password",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/addRemoveSong"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Playlist data",
+            "schema" : {
+              "$ref" : "#/definitions/playlistResponse"
+            }
+          },
+          "404" : {
+            "description" : "Song or playlist not found"
+          },
+          "500" : {
+            "description" : "Fields are missing"
+          }
+        }
+      }
+    }
+  },
+  "definitions" : {
+    "userResponse" : {
+      "type" : "object",
+      "properties" : {
+        "status" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "message" : {
+          "type" : "string"
+        },
+        "data" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/User"
+          }
+        }
+      },
+      "example" : {
+        "data" : [ {
+          "name" : "name",
+          "id" : 6,
+          "email" : "email",
+          "token" : "token"
+        }, {
+          "name" : "name",
+          "id" : 6,
+          "email" : "email",
+          "token" : "token"
+        } ],
+        "message" : "message",
+        "status" : 0
+      }
+    },
+    "songResponse" : {
+      "type" : "object",
+      "properties" : {
+        "status" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "message" : {
+          "type" : "string"
+        },
+        "data" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/Song"
+          }
+        }
+      },
+      "example" : {
+        "data" : [ {
+          "duration" : 1,
+          "name" : "name",
+          "id" : 6
+        }, {
+          "duration" : 1,
+          "name" : "name",
+          "id" : 6
+        } ],
+        "message" : "message",
+        "status" : 0
+      }
+    },
+    "playlistResponse" : {
+      "type" : "object",
+      "properties" : {
+        "status" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "message" : {
+          "type" : "string"
+        },
+        "data" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/Song"
+          }
+        }
+      },
+      "example" : {
+        "data" : [ {
+          "songs" : [ {
+            "duration" : 2,
+            "song_id" : 5,
+            "name" : "name",
+            "id" : 1,
+            "order" : 5
+          }, {
+            "duration" : 2,
+            "song_id" : 5,
+            "name" : "name",
+            "id" : 1,
+            "order" : 5
+          } ],
+          "name" : "name",
+          "id" : 6
+        }, {
+          "songs" : [ {
+            "duration" : 2,
+            "song_id" : 5,
+            "name" : "name",
+            "id" : 1,
+            "order" : 5
+          }, {
+            "duration" : 2,
+            "song_id" : 5,
+            "name" : "name",
+            "id" : 1,
+            "order" : 5
+          } ],
+          "name" : "name",
+          "id" : 6
+        } ],
+        "message" : "message",
+        "status" : 0
+      }
+    },
+    "User" : {
+      "type" : "object",
+      "properties" : {
+        "id" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "name" : {
+          "type" : "string"
+        },
+        "email" : {
+          "type" : "string"
+        },
+        "token" : {
+          "type" : "string"
+        }
+      },
+      "example" : {
+        "name" : "name",
+        "id" : 6,
+        "email" : "email",
+        "token" : "token"
+      }
+    },
+    "Song" : {
+      "type" : "object",
+      "properties" : {
+        "id" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "name" : {
+          "type" : "string"
+        },
+        "duration" : {
+          "type" : "integer",
+          "format" : "int32"
+        }
+      },
+      "example" : {
+        "duration" : 1,
+        "name" : "name",
+        "id" : 6
+      }
+    },
+    "Playlist" : {
+      "type" : "object",
+      "properties" : {
+        "id" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "name" : {
+          "type" : "string"
+        },
+        "songs" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/SongsList"
+          }
+        }
+      },
+      "example" : {
+        "songs" : [ {
+          "duration" : 2,
+          "song_id" : 5,
+          "name" : "name",
+          "id" : 1,
+          "order" : 5
+        }, {
+          "duration" : 2,
+          "song_id" : 5,
+          "name" : "name",
+          "id" : 1,
+          "order" : 5
+        } ],
+        "name" : "name",
+        "id" : 6
+      }
+    },
+    "SongsList" : {
+      "type" : "object",
+      "properties" : {
+        "id" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "song_id" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "name" : {
+          "type" : "string"
+        },
+        "order" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "duration" : {
+          "type" : "integer",
+          "format" : "int32"
+        }
+      },
+      "example" : {
+        "duration" : 2,
+        "song_id" : 5,
+        "name" : "name",
+        "id" : 1,
+        "order" : 5
+      }
+    },
+    "addRemoveSong" : {
+      "type" : "object",
+      "properties" : {
+        "song_id" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "playlist_id" : {
+          "type" : "integer",
+          "format" : "int32"
+        }
+      }
+    }
+  }
+}

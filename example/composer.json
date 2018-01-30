@@ -1,0 +1,20 @@
+{
+    "name": "tc/api_fw",
+    "description": "api framework",
+    "type": "project",
+    "license": "Open",
+    "authors": [
+        {
+            "name": "tarek",
+            "email": "tarek.chida@gmail.com"
+        }
+    ],
+    "autoload": {
+        "classmap": ["Lib/", "App/"]
+    },
+    "minimum-stability": "dev",
+    "require": { 
+    },
+    "require-dev": { 
+    } 
+}
